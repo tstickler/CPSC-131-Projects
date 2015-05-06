@@ -108,7 +108,7 @@ void PriorityQueue::goNext(NodeType * & curr) const{
 *      Return: True if the head is null, false otherwise    *
 ************************************************************/
 bool PriorityQueue::isEmpty() const{
-	if (head == NULL)
+	if (size() == 0)
 		return true;
 	else
 		return false;
@@ -140,12 +140,15 @@ int PriorityQueue::size() const {
 ************************************************************/
 void PriorityQueue::insert(string taskName, int priority){
 	NodeType * task = new NodeType(taskName, priority);
-	
-	if (isEmpty())
+
+	if (isEmpty()){
 		head = task;
+		taskCount++;
+	}
 	else{
 		NodeType * current = head, * previous = head;
-		
+		taskCount++;
+
 		/*
 		* There are three things that can happen when adding
 		* a new task to the queue. 1) It has a higher priority 
@@ -244,6 +247,7 @@ void PriorityQueue::removeMin(){
 	delete deleteTask;
 
 	deleteTask = NULL;
+	taskCount--;
 }
 
 /************************************************************
