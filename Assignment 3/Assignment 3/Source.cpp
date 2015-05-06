@@ -290,7 +290,6 @@ void printTasks(PriorityQueue & taskList){
 
 int main()
 {
-	//Start
 	PriorityQueue taskList; 
 
 	buildTaskList(taskList);
