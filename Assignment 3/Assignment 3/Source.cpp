@@ -170,6 +170,7 @@ void PriorityQueue::insert(string taskName, int priority){
 					task->next = head;
 					head = task;
 
+					current = previous = task = NULL;
 					return;
 				}
 
