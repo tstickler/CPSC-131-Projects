@@ -147,7 +147,6 @@ void PriorityQueue::insert(string taskName, int priority){
 	}
 	else{
 		NodeType * current = head, * previous = head;
-		taskCount++;
 
 		/*
 		* There are three things that can happen when adding
@@ -169,12 +168,15 @@ void PriorityQueue::insert(string taskName, int priority){
 				if (current == head){
 					task->next = head;
 					head = task;
+					taskCount++;
 
+					current = previous = task = NULL;
 					return;
 				}
 
 				previous->next = task;
 				task->next = current;
+				taskCount++;
 
 				current = previous = task = NULL;
 
@@ -197,6 +199,7 @@ void PriorityQueue::insert(string taskName, int priority){
 
 				task->next = current;
 				previous->next = task;
+				taskCount++;
 
 				current = previous = task = NULL;
 
@@ -220,6 +223,7 @@ void PriorityQueue::insert(string taskName, int priority){
 		* this task at the end.
 		*/
 		previous->next = task;
+		taskCount++;
 
 		current = previous = task = NULL;
 	}
@@ -297,7 +301,6 @@ int main()
 	PriorityQueue taskList; 
 
 	buildTaskList(taskList);
-	
 	cout << "Removing all tasks in order of priority and printing...\n";
 	printTasks(taskList);
 
